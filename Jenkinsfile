@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone from GitHub') {
+        stage('Clone Code') {
             steps {
                 git 'https://github.com/master-ankitt/flask-fusion-pipeline.git'
             }
@@ -14,10 +14,14 @@ pipeline {
             }
         }
 
+        stage('Stop Existing App') {
+            steps {
+                sh 'fuser -k 5000/tcp || true'
+            }
+        }
+
         stage('Run Flask App') {
             steps {
-                // Kill any running process on port 80 (optional)
-                sh 'fuser -k 80/tcp || true'
                 sh 'nohup python3 app.py &'
             }
         }
