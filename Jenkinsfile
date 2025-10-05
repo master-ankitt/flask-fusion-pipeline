@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/master-ankitt/flask-fusion-pipeline.git
+                git branch: 'main', url: 'https://github.com/master-ankitt/flask-fusion-pipeline.git'
             }
         }
 
