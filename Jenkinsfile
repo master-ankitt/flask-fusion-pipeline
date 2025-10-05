@@ -10,19 +10,19 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'sudo pip3 install -r requirements.txt'
+                sh 'pip3 install -r requirements.txt'
             }
         }
 
         stage('Stop Existing App') {
             steps {
-                sh 'sudo fuser -k 5000/tcp || true'
+                sh 'fuser -k 5000/tcp || true'
             }
         }
 
         stage('Run Flask App') {
             steps {
-                sh 'sudo nohup python3 app.py &'
+                sh 'nohup python3 app.py &'
             }
         }
     }
