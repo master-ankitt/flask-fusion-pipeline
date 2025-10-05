@@ -22,7 +22,7 @@ pipeline {
 
         stage('Run Flask App') {
             steps {
-                sh 'nohup python3 app.py &'
+                sh 'nohup python3 app.py > flask.log 2>&1 &'
             }
         }
     }
